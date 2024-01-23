@@ -8,9 +8,16 @@ Example of configuring [OnlyOffice DocumentServer](https://github.com/ONLYOFFICE
     ```bash
     git clone git@github.com:intellisense/onlyoffice-minio.git
     ```
-2. Run `docker compose up --build`
-3. Allow some time for the OnlyOffice DocumentServer to fully start.
-4. Open the browser and visit the OnlyOffice DocumentServer healthcheck URL at http://127.0.0.1/healthcheck; it should respond with `true`.
+2. Create a `.env` file with the following variables:
+    ```
+    AWS_ACCESS_KEY_ID=minio-access-key
+    AWS_SECRET_ACCESS_KEY=minio-secret-key
+    ENDPOINT_URL="http://minio:9000"
+    BUCKET_NAME=onlyoffice
+    ```
+3. Run `docker compose up --build`
+4. Allow some time for the OnlyOffice DocumentServer to fully start.
+5. Open the browser and visit the OnlyOffice DocumentServer healthcheck URL at http://127.0.0.1/healthcheck; it should respond with `true`.
    - If it responds with `false` check `onlyoffice-documentserver` container logs.
 
 ## Validating connectivity with Minio
